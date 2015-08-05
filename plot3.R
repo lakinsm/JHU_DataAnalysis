@@ -23,16 +23,28 @@ processData <- function(infile) {
 }
 
 
-## Plot2.png code
-plot2 <- function(df) {
+## Plot3.png code
+plot3 <- function(df) {
         
         plot(
                 x=df$DateTime,
-                y=df$Global_active_power,
+                y=df$Sub_metering_1,
                 type="l",
-                ylab="Global Active Power (kilowatts)",
+                ylab="Energy sub metering",
                 xlab="",
                 axes=F
+        )
+        
+        lines(
+                x=df$DateTime,
+                y=df$Sub_metering_2,
+                col="red"
+        )
+        
+        lines(
+                x=df$DateTime,
+                y=df$Sub_metering_3,
+                col="blue"
         )
         
         box()
@@ -49,12 +61,19 @@ plot2 <- function(df) {
                 labels=unique(weekdays(df$DateTime, abbreviate=T))
         )
         
-        axis(side=2, at=c(0,2,4,6))
+        axis(side=2, at=c(0,10,20,30))
+        
+        legend(
+                x="topright",
+                lty=1,
+                col=c("black", "red", "blue"),
+                legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3")
+        )
         
 }
 
-## png(filename="plot2.png", width=480, height=480)
+## png(filename="plot3.png", width=480, height=480)
 
-## plot2(processData(infile))
+## plot3(processData(infile))
 
 ## dev.off()

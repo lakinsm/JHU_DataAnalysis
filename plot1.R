@@ -25,8 +25,6 @@ processData <- function(infile) {
 ## Plot1.png code
 plot1 <- function(df) {
         
-        png(filename="plot1.png", width=480, height=480)
-        
         hist(
                 df$Global_active_power,
                 main="Global Active Power", 
@@ -36,8 +34,10 @@ plot1 <- function(df) {
                 col="red"
         )
         
-        dev.off()
-        
 }
 
+## png(filename="plot1.png", width=480, height=480)
+
 ## plot1(processData(infile))
+
+## dev.off()
